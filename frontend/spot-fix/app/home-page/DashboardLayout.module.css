@@ -1,0 +1,312 @@
+:global(*) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Body / Screen Layout */
+.mobileWrapper {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #9d85ff 0%, #3b82f6 50%, #2563eb 100%);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.mobileScreen {
+    width: 100%;
+    max-width: 600px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+/* App Header */
+.appHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(157, 133, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.brandTitle {
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+.headerIcons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iconBtn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* =========================
+   Settings Wrapper & Menu
+   ========================= */
+
+.settingsWrapper {
+    position: relative;
+}
+
+.settingsButton {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.settingsButton:hover {
+    opacity: 0.85;
+}
+
+.settingsMenu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+.settingsMenu a {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    color: #333333;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.settingsMenu a:hover {
+    background: #e0e7ff;
+    color: #1d4ed8;
+}
+
+/* =========================
+   Toggle Button Component
+   ========================= */
+
+.toggleBtn {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    outline: none;
+}
+
+.toggleThumb {
+    position: absolute;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggleBtn.active {
+    background-color: #10b981; /* Green active state */
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.toggleBtn.active .toggleThumb {
+    transform: translateX(20px);
+}
+
+/* Feed Container */
+.feedContainer {
+    flex: 1;
+    padding: 12px 16px 100px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.feedContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.feedList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Translucent Blue Cards */
+.postCard {
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px;
+    padding: 16px;
+    color: #ffffff;
+}
+
+.cardContent {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.postText {
+    flex: 1;
+}
+
+.cardBodyTag {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.photoCount {
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.postText h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #ffffff;
+}
+
+.cardDesc {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.35;
+}
+
+.photoContainer {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.postActions {
+    display: flex;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.postActions button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Floating Action Button */
+.fabButton {
+    position: fixed;
+    bottom: 68px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 52px;
+    background-color: #ff1744;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(255, 23, 68, 0.4);
+    z-index: 30;
+}
+
+/* Fixed Edge-to-Edge Bottom Nav Bar */
+.bottomNav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #0d47a1;
+    padding: 12px 0;
+    border-radius: 0;
+    z-index: 20;
+}
+
+.navItem {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.navItem.active {
+    color: #ffffff;
+}
+
+/* Loading Indicator */
+.loadingIndicator {
+    text-align: center;
+    padding: 16px 0;
+    min-height: 40px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+}

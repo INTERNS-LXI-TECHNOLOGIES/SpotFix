@@ -1,0 +1,134 @@
+.container{
+    width:350px;
+    margin:60px auto;
+    padding:40px;
+    background:white;
+    border-radius:12px;
+    border:1px solid #ddd;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.logo {
+  font-size: 55px;
+  font-family: "Brush Script MT", cursive;
+  font-weight: bold;
+
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #00bfff,
+    #0000ff,
+    #8b00ff
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: 30px;
+}
+
+.input {
+color:black;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  background: #fafafa;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #999;
+  background: white;
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 10px;
+  background: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.loginBtn:hover {
+  background: #1877f2;
+}
+
+.resetBtn{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    border:none;
+    border-radius:8px;
+
+    background:#d9d9d9;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.or {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 0;
+    color: #777;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.or::before,
+.or::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.or::before {
+    margin-right: 12px;
+}
+
+.or::after {
+    margin-left: 12px;
+}
+
+.google{
+    display:block;
+    margin-top:20px;
+    color:#1a73e8;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.signup{
+    display:block;
+    margin-top:15px;
+    color:#0095f6;
+    font-size:18px;
+    text-decoration:none;
+    font-weight:bold;
+}
+.home{
+    display:block;
+    margin-top:15px;
+    color:#0095f6;
+    font-size:18px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+body {
+  background: #fafafa;
+}

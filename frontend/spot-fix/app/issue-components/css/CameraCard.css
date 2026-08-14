@@ -1,0 +1,137 @@
+.camera-card{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.camera-preview{
+
+    width:100%;
+
+}
+
+.webcam{
+
+    width:100%;
+
+    border-radius:16px;
+
+    border:1px solid #ddd;
+
+}
+
+.captured-image{
+
+    width:100%;
+
+    border-radius:16px;
+
+    object-fit:cover;
+
+}
+
+.camera-btn,
+.capture-btn{
+
+    width:100%;
+
+    height:50px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.button-row{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:16px;
+
+}
+
+.upload-btn,
+.retake-btn{
+
+    flex:1;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.upload-btn{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.retake-btn{
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+    border:1px solid #d1d5db;
+
+}
+
+@media(max-width:480px){
+
+    .button-row{
+
+        flex-direction:column;
+
+        width:100%;
+
+    }
+
+}

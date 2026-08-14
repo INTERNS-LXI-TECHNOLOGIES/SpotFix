@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20260730074906"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "voteType",
+      "fieldType": "VoteType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "UPVOTE,DOWNVOTE"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "TicketVote",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "ticket",
+      "relationshipName": "ticket",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

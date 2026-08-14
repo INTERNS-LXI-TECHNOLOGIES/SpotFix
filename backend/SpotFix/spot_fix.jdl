@@ -1,0 +1,286 @@
+enum AttachmentType {
+
+    IMAGE,
+
+    VIDEO,
+
+    AUDIO,
+
+    PDF,
+
+    DOCUMENT,
+
+    CONTRACTOR_UPDATE,
+
+    COMPLETION_REPORT
+}
+enum TicketStatus {
+    OPEN,
+    UNDER_REVIEW,
+    APPROVED,
+    ASSIGNED,
+    IN_PROGRESS,
+    RESOLVED,
+    REJECTED,
+    CLOSED
+}
+
+enum Priority {
+    LOW,
+    MEDIUM,
+    HIGH,
+    URGENT
+}
+
+enum WorkStatus {
+
+    PLANNED,
+
+    ASSIGNED,
+
+    ACTIVE,
+
+    ON_HOLD,
+
+    DELAYED,
+
+    COMPLETED,
+
+    CANCELLED
+}
+
+enum VoteType {
+    UPVOTE,
+    DOWNVOTE
+}
+enum Visibility {
+    PUBLIC,
+    PRIVATE
+}
+
+enum TicketCategory {
+    ROAD_DAMAGE,
+    WATER_SUPPLY,
+    STREET_LIGHT,
+    DRAINAGE,
+    GARBAGE,
+    ELECTRICITY,
+    TREE,
+    OTHER
+}
+// ===================================================================
+// Core Entities
+// ===================================================================
+
+entity Ward {
+
+    code String required unique maxlength(20)
+
+    name String required unique maxlength(100)
+
+    municipality String maxlength(100)
+
+    description TextBlob
+}
+
+
+entity Location {
+
+    addressText String required maxlength(500)
+
+    landmark String maxlength(150)
+
+    latitude Double min(-90) max(90)
+
+    longitude Double min(-180) max(180)
+
+}
+
+entity Ticket {
+
+    title String required maxlength(200)
+
+    description TextBlob required
+
+    status TicketStatus required
+
+    priority Priority required
+
+    visibility Visibility required
+
+    category TicketCategory required
+
+    createdDate Instant required
+
+    updatedDate Instant
+
+    expectedResolutionDate Instant
+
+    resolvedDate Instant
+
+    aiSummary TextBlob
+
+    aiDuplicate Boolean
+
+    duplicateScore Double min(0) max(1)
+    
+    aiConfidence Double min(0) max(1)
+
+    duplicateTicketId Long
+
+    deleted Boolean required
+
+    deletedDate Instant
+}
+
+entity TicketStatusHistory {
+    oldStatus TicketStatus required
+    newStatus TicketStatus required
+    changedDate Instant required
+}
+
+entity TicketVote {
+    voteType VoteType required
+    createdDate Instant required
+}
+
+entity Department {
+
+    name String required unique maxlength(150)
+
+    description TextBlob
+
+    contactEmail String maxlength(254)
+
+    contactPhone String maxlength(20)
+    active Boolean required
+}
+
+entity WorkPlan {
+
+    estimatedCost BigDecimal min(0)
+
+    startedDate Instant
+
+    expectedCompletionDate Instant
+
+    actualCompletionDate Instant
+
+    completionPercentage Integer min(0) max(100)
+
+    status WorkStatus required
+
+    remarks TextBlob
+
+    deleted Boolean required
+
+    deletedDate Instant
+}
+
+entity Attachment {
+
+    attachmentType AttachmentType required
+
+    fileName String required maxlength(255)
+
+    filePath String required maxlength(500)
+
+    fileType String maxlength(50)
+
+    fileSize Long min(0)
+
+    checksum String maxlength(64)
+
+    uploadedDate Instant required
+
+    transcript TextBlob
+
+    durationSeconds Integer min(0)
+
+    language String maxlength(10)
+
+    deleted Boolean required
+    updatedDate Instant
+    deletedDate Instant
+}
+
+entity UserProfile {
+    phone String maxlength(20)
+    address TextBlob
+    avatarUrl String maxlength(500)
+    bio TextBlob
+}
+
+entity Comment {
+
+  title String maxlength(100)
+
+ content TextBlob required
+    createdDate Instant required
+
+    updatedDate Instant
+
+    deleted Boolean required
+
+    deletedDate Instant required
+}
+
+
+// ===================================================================
+// Relationships
+// ===================================================================
+
+relationship ManyToOne {
+    Location{ward(id)} to Ward
+}
+
+
+relationship ManyToOne {
+    Ticket{reportedBy(login) required} to User with builtInEntity
+    Ticket{location(id) required} to Location
+    Ticket{ward(id) required} to Ward
+    Ticket{assignedDepartment(id)} to Department
+}
+
+relationship ManyToOne {
+    TicketStatusHistory{ticket(id) required} to Ticket
+    TicketStatusHistory{changedBy(login) required} to User with builtInEntity
+}
+
+relationship ManyToOne {
+    TicketVote{ticket(id) required} to Ticket
+    TicketVote{user(login) required} to User with builtInEntity
+}
+
+relationship ManyToOne {
+    WorkPlan{ticket(id) required} to Ticket
+    WorkPlan{department(id) required} to Department
+}
+
+relationship ManyToOne {
+    Attachment{ticket(id) required} to Ticket
+    Attachment{uploadedBy(login) required} to User with builtInEntity
+}
+
+relationship OneToOne {
+    UserProfile{user(login) required} to User with builtInEntity
+}
+
+relationship ManyToOne {
+    Comment{ticket(id) required} to Ticket
+    Comment{user(login) required} to User with builtInEntity
+}
+
+
+
+// ===================================================================
+// Entity Options
+// ===================================================================
+
+paginate Ward, Location, Ticket, Department, WorkPlan, Attachment, Comment with pagination
+paginate TicketStatusHistory, TicketVote with infinite-scroll
+paginate UserProfile with pagination
+
+service Ward, Location, Ticket, TicketStatusHistory, TicketVote, Department, WorkPlan, Attachment, UserProfile, Comment with serviceImpl
+dto Ward, Location, Ticket, TicketStatusHistory, TicketVote, Department, WorkPlan, Attachment, UserProfile, Comment with mapstruct
+filter Ticket, TicketStatusHistory, TicketVote, Department, WorkPlan, Attachment, Comment, Ward, Location

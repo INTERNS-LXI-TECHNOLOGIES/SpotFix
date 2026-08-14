@@ -1,0 +1,76 @@
+{
+  "annotations": {
+    "changelogDate": "20260730074908"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "estimatedCost",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "startedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "expectedCompletionDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "actualCompletionDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "completionPercentage",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "WorkStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PLANNED,ASSIGNED,ACTIVE,ON_HOLD,DELAYED,COMPLETED,CANCELLED"
+    },
+    {
+      "fieldName": "remarks",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "deleted",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "deletedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "WorkPlan",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "ticket",
+      "relationshipName": "ticket",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "department",
+      "relationshipName": "department",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

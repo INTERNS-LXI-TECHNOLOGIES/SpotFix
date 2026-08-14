@@ -1,0 +1,113 @@
+package com.divisosofttech.spot_fix.service.dto;
+
+import jakarta.persistence.Lob;
+import jakarta.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ * A DTO for the {@link com.divisosofttech.spot_fix.domain.Department} entity.
+ */
+@SuppressWarnings("common-java:DuplicatedBlocks")
+public class DepartmentDTO implements Serializable {
+
+    private Long id;
+
+    @NotNull(message = "must not be null")
+    @Size(max = 150)
+    private String name;
+
+    @Lob
+    private String description;
+
+    @Size(max = 254)
+    private String contactEmail;
+
+    @Size(max = 20)
+    private String contactPhone;
+
+    @NotNull(message = "must not be null")
+    private Boolean active;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DepartmentDTO)) {
+            return false;
+        }
+
+        DepartmentDTO departmentDTO = (DepartmentDTO) o;
+        if (this.id == null) {
+            return false;
+        }
+        return Objects.equals(this.id, departmentDTO.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id);
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "DepartmentDTO{" +
+            "id=" + getId() +
+            ", name='" + getName() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", contactEmail='" + getContactEmail() + "'" +
+            ", contactPhone='" + getContactPhone() + "'" +
+            ", active='" + getActive() + "'" +
+            "}";
+    }
+}

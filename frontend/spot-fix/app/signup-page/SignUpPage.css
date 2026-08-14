@@ -1,0 +1,87 @@
+/* Page Background */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("/images/signup.jpg");
+    padding: 20px;
+}
+
+/* Form Card */
+.signup-form {
+    width: 420px;
+    background: transparent;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading */
+.signup-form h2 {
+    text-align: center;
+    color: #0d6efd;
+    margin-bottom: 25px;
+}
+
+/* Labels */
+.signup-form label {
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Input Fields */
+.signup-form input,
+.signup-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #080000;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus Effect */
+.signup-form input:focus,
+.signup-form textarea:focus {
+    border-color: #0d6efd;
+}
+
+/* Textarea */
+.signup-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Button */
+.signup-form button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background-color: #0d6efd;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover */
+.signup-form button:hover {
+    background-color: #0b5ed7;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .signup-form {
+        width: 100%;
+        padding: 20px;
+    }
+}
