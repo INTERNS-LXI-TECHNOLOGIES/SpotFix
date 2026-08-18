@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20260818100655"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "oldStatus",
+      "fieldType": "TicketStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "OPEN,UNDER_REVIEW,APPROVED,ASSIGNED,IN_PROGRESS,RESOLVED,REJECTED,CLOSED"
+    },
+    {
+      "fieldName": "newStatus",
+      "fieldType": "TicketStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "OPEN,UNDER_REVIEW,APPROVED,ASSIGNED,IN_PROGRESS,RESOLVED,REJECTED,CLOSED"
+    },
+    {
+      "fieldName": "changedDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "TicketStatusHistory",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "ticket",
+      "relationshipName": "ticket",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "changedBy",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
