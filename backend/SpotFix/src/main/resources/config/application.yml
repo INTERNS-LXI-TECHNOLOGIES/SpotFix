@@ -104,11 +104,11 @@ spring:
   # =================================================================
   ai:
     openai:
-      api-key: ${NVIDIA_API_KEY}
+      api-key:  ${MY_SECRET_KEY}
       base-url: https://integrate.api.nvidia.com
       chat:
         options:
-          model: nvidia/nemotron-3-ultra-550b-a55b
+          model: meta/llama-3.1-8b-instruct
 
   servlet:
     multipart:
