@@ -192,7 +192,7 @@ entity Attachment {
     checksum String maxlength(64)
 
     uploadedDate Instant required
-
+    file Blob
     transcript TextBlob
 
     durationSeconds Integer min(0)

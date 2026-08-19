@@ -1,2 +1,0 @@
-org.springframework.test.context.ContextCustomizerFactory = \
-    com.divisosofttech.spot_fix.config.SqlTestContainersSpringContextCustomizerFactory

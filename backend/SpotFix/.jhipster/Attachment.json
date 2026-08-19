@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20260730074909"
+    "changelogDate": "20260818100659"
   },
   "applications": ["*"],
   "dto": "mapstruct",
@@ -45,6 +45,10 @@
       "fieldName": "uploadedDate",
       "fieldType": "Instant",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "file",
+      "fieldType": "Blob"
     },
     {
       "fieldName": "transcript",
