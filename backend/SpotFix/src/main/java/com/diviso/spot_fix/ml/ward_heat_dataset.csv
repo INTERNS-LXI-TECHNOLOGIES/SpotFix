@@ -1,0 +1,8 @@
+total_tickets,high_tickets,medium_tickets,low_tickets,unresolved_tickets,recent_tickets,heat_score
+10,2,4,4,5,3,38
+15,3,7,5,8,5,45
+20,5,8,7,12,8,59
+25,8,10,7,18,12,68
+30,12,10,8,23,15,78
+35,15,12,8,27,20,88
+40,18,14,8,32,25,94
