@@ -140,6 +140,7 @@ export default function IssueRaise() {
     try {
       // 1. Create Ticket
       const createdTicket = await ticketApi.createTicket({
+
         ticketDTO: {
           title: speech.slice(0, 50) || "Untitled Issue",
           description: speech,
@@ -152,6 +153,7 @@ export default function IssueRaise() {
           deleted: false,
           reportedBy: { id: 1 },
           ward: { id: 1500 },
+          assignedDepartment:{id:1500},
         },
       });
 
