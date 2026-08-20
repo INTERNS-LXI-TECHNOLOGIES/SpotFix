@@ -7,7 +7,7 @@ import AttachmentsCard from "../issue-components/AttachmentsCard";
 import CameraCard from "../issue-components/CameraCard";
 import { TicketResourceApi, LocationResourceApi ,AttachmentResourceApi} from "@/src/app/shared/api";
 import type { LocationDTO } from "@/src/app/shared/api/models/LocationDTO";
-import type {AttachmentDto} from "@/src/app/shared/api/models/AttachmentDTO";
+import type {AttachmentDTO} from "@/src/app/shared/api/models/AttachmentDTO";
 
 import "./IssueRaise.css";
 
