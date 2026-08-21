@@ -7,6 +7,8 @@ services:
     #   - ~/volumes/jhipster/spot_fix/postgresql/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=spot_fix
+      - POSTGRES_PASSWORD=spot_fix
+      - POSTGRES_DB=spot_fix
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER}']

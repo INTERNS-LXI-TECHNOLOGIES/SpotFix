@@ -34,6 +34,8 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5432/spot_fix
+    username: spot_fix
+    password: spot_fix
     hikari:
       poolName: Hikari
       auto-commit: false
