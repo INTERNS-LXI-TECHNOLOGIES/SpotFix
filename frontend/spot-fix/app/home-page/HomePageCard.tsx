@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { Oleo_Script } from "next/font/google";
 import style from "./DashboardLayout.module.css";
+import TicketViewCard from "@/app/ticket-view/[id]/TicketViewCard";
+
 import {
   FiHome,
   FiSearch,
@@ -23,7 +25,11 @@ interface DashboardLayoutProps {
 }
 
 function FeedCard({ post }: { post: any }) {
+
+  const  ticketId = post.id || post.ticketId;
+
   return (
+
     <article className={style.postCard}>
       <div className={style.cardContent}>
         <div className={style.postText}>
@@ -40,9 +46,12 @@ function FeedCard({ post }: { post: any }) {
         <button aria-label="Like"><FiHeart /></button>
         <button aria-label="Comment"><FiMessageSquare /></button>
         <button aria-label="Share"><FiShare2 /></button>
-        <a href="#">View</a>
+
+        <Link href={`/ticket-view/${ticketId}`}>View</Link>
       </div>
+
     </article>
+
   );
 }
 
@@ -94,19 +103,23 @@ export default function DashboardLayout({ onSend = EMPTY_POSTS }: DashboardLayou
       const nextPosts = data.slice(start, end);
 
       if (nextPosts.length === 0) {
+
         setHasMore(false);
         hasMoreRef.current = false;
         setLoading(false);
         loadingRef.current = false;
         return;
+
       }
 
       setPosts((prev) => [...prev, ...nextPosts]);
       pageRef.current = currentPage + 1;
 
       if (start + PAGE_SIZE >= data.length) {
+
         setHasMore(false);
         hasMoreRef.current = false;
+
       }
 
       setLoading(false);
