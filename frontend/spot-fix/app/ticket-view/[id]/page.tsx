@@ -1,45 +1,27 @@
-"use client"
-
-import {useState} from "react";
 import TicketViewCard from "./TicketViewCard";
+import { TicketResourceApi } from "@/src/app/shared/api";
 
-export default function TicketView(){
+interface PageProps {
+    params: Promise<{ id: string }>;
+}
 
-const[ticket,setTicket] = useState<number>(0);
+export default async function TicketView({ params }: PageProps) {
+    const { id } = await params;
+    const ticketApi = new TicketResourceApi();
+    const numericId = Number(id);
 
+    let ticketData = null;
 
-const  ticketViewEvent = (num: number) =>{
-
-
-setTicket(num);
-
-console.log("Clicked : ",num);
-
-
+    try {
+        // getTicket returns the TicketDTO directly
+        ticketData = await ticketApi.getTicket({ id: numericId });
+    } catch (error) {
+        console.error("Failed to fetch the Ticket:", error);
     }
 
-
-    return(
-
-
+    return (
         <div>
-
-<TicketViewCard   onSend={ticketViewEvent}  />
-
-
+            <TicketViewCard ticket={ticketData} />
         </div>
-
-
-
-
-
-
     );
-
-
-
-
-
-
-
 }
